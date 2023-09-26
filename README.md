@@ -33,13 +33,28 @@ Box(Modifier.fillMaxWidth().weight(1f).background(Color.Black), contentAlignment
         }                                                                                             
     }                                                                                                 
 }                                                                                                     
-Row(Modifier.padding(start = 16.dp, end = 16.dp), verticalAlignment = Alignment.CenterVertically) {    
-    Text(formatSeconds((progress.duration * progress.fraction).toLong() / 1000), color = Color.Black) 
-    Slider(value = progress.fraction,                                                                 
-        onValueChange = { seek = it },                                                                
-        modifier = Modifier.weight(1f),                                                               
-        colors =  SliderDefaults.colors(thumbColor= Color.Black, activeTrackColor=Color.Black))       
-    Text(formatSeconds(progress.duration / 1000), color = Color.Black)                                
-}                                                                                                     
+......
+LaunchedEffect(mediaState.value){                            
+    println("out mediaState=${mediaState.value}")           
+    when (mediaState.value) {                               
+        MediaState.LOADING -> {                             
+            showLoading = true                              
+            showErrorHint = false                           
+            //由于覆盖在JavaFx组件上面的UI无法显示出来，所以先将其尺寸设置为0，等加载完成后恢复 
+            videoModifier = Modifier.size(DpSize.Zero)      
+        }                                                   
+        MediaState.READY -> {                               
+            delay(1000)                                     
+            showLoading = false                             
+            videoModifier = Modifier.fillMaxSize()          
+        }                                                   
+        MediaState.ERROR -> {                               
+            showErrorHint = true                            
+            showLoading = false                             
+            videoModifier = Modifier.size(DpSize.Zero)      
+        }                                                   
+        else -> {}                                          
+    }                                                       
+}                                                           
 ```
 
