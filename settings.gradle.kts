@@ -15,4 +15,4 @@ pluginManagement {
 
 
 rootProject.name = "compose-video-player"
-include(":base")
+include(":library")

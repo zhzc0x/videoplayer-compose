@@ -15,6 +15,9 @@ repositories {
     mavenCentral()
     jetbrainsCompose()
 }
+dependencies {
+    implementation(project(":library"))
+}
 
 
 kotlin {
@@ -29,11 +32,6 @@ kotlin {
 tasks.wrapper {
     distributionType = Wrapper.DistributionType.ALL
     gradleVersion = properties["gradle.version"] as String
-}
-
-dependencies {
-//    implementation(compose.desktop.currentOs)
-    implementation(project(":base"))
 }
 
 compose.desktop {
