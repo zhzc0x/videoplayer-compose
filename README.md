@@ -2,9 +2,9 @@
 
 ## 基于JavaFx组件MediaPlayer开发，独立运行，不依赖任何其它视频播放器
 
-![](https://github.com/zhzc0x/compose-video-player/blob/master/raw/demo1.png)
+![](https://github.com/zhzc0x/videoplayer-compose/blob/master/raw/demo1.png)
 
-![](https://github.com/zhzc0x/compose-video-player/blob/master/raw/demo2.png)
+![](https://github.com/zhzc0x/videoplayer-compose/blob/master/raw/demo2.png)
 
 ## 代码示例
 
